@@ -1,0 +1,74 @@
+install.packages("tidyverse")  # ggplot2 sudah termasuk
+energy <- read_csv("Renewable_Energy_Usage_Sampled.csv")
+energy <- readr::read_csv("Renewable_Energy_Usage_Sampled.csv")
+library(readr)
+# ===============================
+# Visualisasi Energi Terbarukan Dunia
+# by [Nama Kamu]
+# ===============================
+# --- 1. Install dan Panggil Library ---
+install.packages("tidyverse")  # jika belum terinstal
+library(tidyverse)             # muat semua termasuk ggplot2 dan dplyr
+library(readr)                 # jaga-jaga agar read_csv bisa dipakai
+# --- 2. Baca Data CSV ---
+energy <- read_csv("Renewable_Energy_Usage_Sampled.csv")
+# --- 3. Lihat Struktur Data ---
+glimpse(energy)
+summary(energy)
+head(energy)
+# --- 4. Visualisasi 1: Tren Global Energi Terbarukan ---
+energy %>%
+  group_by(Year) %>%
+  summarize(GlobalRenewable = mean(Renewable_Energy_Usage, na.rm = TRUE)) %>%
+  ggplot(aes(x = Year, y = GlobalRenewable)) +
+  geom_line(color = "forestgreen", size = 1.2) +
+  labs(
+    title = "Tren Rata-rata Penggunaan Energi Terbarukan Dunia",
+    x = "Tahun", y = "Energi Terbarukan (%)"
+  ) +
+  theme_minimal()
+# --- 5. Visualisasi 2: Perbandingan Antar Negara ---
+selected_countries <- c("Indonesia", "United States", "Germany", "China")
+energy %>%
+  filter(Country %in% selected_countries) %>%
+  ggplot(aes(x = Year, y = Renewable_Energy_Usage, color = Country)) +
+  geom_line(size = 1) +
+  labs(
+    title = "Perbandingan Penggunaan Energi Terbarukan",
+    x = "Tahun", y = "Energi Terbarukan (%)"
+  ) +
+  theme_minimal()
+getwd()
+ setwd("C:\Users\Asus\Downloads\archive")
+setwd("C:\Users\Asus\Downloads\archive")
+setwd("C:\\Users\\Asus\\Downloads\\archive")
+setwd("C:/Users/Asus/Downloads/archive")
+list.files()
+library(readr)
+energy <- read_csv("Renewable_Energy_Usage_Sampled.csv")
+glimpse(energy)
+selected_countries <- c("Indonesia", "United States", "Germany", "China")
+energy %>%
+  filter(Country %in% selected_countries) %>%
+  group_by(Country, Adoption_Year) %>%
+  summarize(Average_Usage = mean(Monthly_Usage_kWh, na.rm = TRUE)) %>%
+  ggplot(aes(x = Adoption_Year, y = Average_Usage, color = Country)) +
+  geom_line(size = 1) +
+  labs(
+    title = "Perbandingan Penggunaan Energi Terbarukan Antar Negara",
+    x = "Tahun Adopsi",
+    y = "Energi Terbarukan Rata-rata (kWh)"
+  ) +
+selected_countries <- c("Indonesia", "Australia", "Amerika", "China")
+energy %>%
+  filter(Country %in% selected_countries) %>%
+  group_by(Country, Adoption_Year) %>%
+  summarize(Average_Usage = mean(Monthly_Usage_kWh, na.rm = TRUE)) %>%
+  ggplot(aes(x = Adoption_Year, y = Average_Usage, color = Country)) +
+  geom_line(size = 1) +
+  labs(
+    title = "Perbandingan Penggunaan Energi Terbarukan Antar Negara",
+    x = "Tahun Adopsi",
+    y = "Energi Terbarukan Rata-rata (kWh)"
+  ) +
+  theme_minimal()
